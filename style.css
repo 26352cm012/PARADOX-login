@@ -1,20 +1,19 @@
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;min-height:100%;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#000;color:#fff}
+html,body{margin:0;width:100%;min-height:100%;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f3f3ef;color:#171717}
 body{min-height:100vh;overflow:hidden}
-body::before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 50% 45%,#202020 0,#0b0b0b 38%,#000 78%);z-index:-1}
+body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 50% 40%,#fff 0,#f7f7f3 42%,#ecece7 100%);z-index:-1}
 .shell{min-height:100vh;display:grid;place-items:center;padding:24px}
-.card{width:min(480px,100%);padding:42px;border:1px solid #333;border-radius:22px;background:#0b0b0bf2;box-shadow:0 28px 90px #000;backdrop-filter:blur(8px)}
-.logo{font-size:13px;font-weight:900;letter-spacing:.5em;color:#bbb;margin-bottom:44px}
-.eyebrow{font-size:10px;font-weight:800;letter-spacing:.22em;color:#777;margin-bottom:12px}
-h1{margin:0;color:#fff;font-size:clamp(30px,7vw,44px);line-height:1.04;letter-spacing:-.045em}
-.sub{margin:16px 0 32px;color:#888;font-size:14px}
-label{display:block;margin:18px 0 8px;color:#bbb;font-size:12px;font-weight:750}
-input{display:block;width:100%;height:50px;padding:0 15px;border:1px solid #333;border-radius:10px;background:#151515;color:#fff;outline:none;font:inherit;font-size:14px}
-input::placeholder{color:#606060}
-input:focus{border-color:#777;box-shadow:0 0 0 3px #fff0a}
+.card{width:min(480px,100%);padding:42px;border:1px solid #d7d7d0;border-radius:22px;background:rgba(255,255,252,.94);box-shadow:0 28px 80px rgba(30,30,20,.12);backdrop-filter:blur(8px)}
+.eyebrow{font-size:10px;font-weight:850;letter-spacing:.22em;color:#777;margin-bottom:12px}
+h1{margin:0;color:#111;font-size:clamp(30px,7vw,44px);line-height:1.04;letter-spacing:-.045em}
+.sub{margin:16px 0 32px;color:#666;font-size:14px}
+label{display:block;margin:18px 0 8px;color:#333;font-size:12px;font-weight:750}
+input{display:block;width:100%;height:50px;padding:0 15px;border:1px solid #cfcfc7;border-radius:10px;background:#fff;color:#111;outline:none;font:inherit;font-size:14px}
+input::placeholder{color:#9a9a92}
+input:focus{border-color:#777;box-shadow:0 0 0 3px rgba(0,0,0,.07)}
 .actions{position:relative;width:100%;height:90px;margin-top:24px}
-#loginButton{position:absolute;left:0;top:14px;z-index:5;padding:15px 22px;border:0;border-radius:10px;background:#fff;color:#000;font:inherit;font-size:13px;font-weight:950;letter-spacing:.08em;cursor:pointer;white-space:nowrap;transition:left .06s linear,top .06s linear,transform .05s linear}
+#loginButton{position:absolute;left:0;top:14px;z-index:5;padding:15px 22px;border:0;border-radius:10px;background:#171717;color:#fff;font:inherit;font-size:13px;font-weight:950;letter-spacing:.08em;cursor:pointer;white-space:nowrap;transition:left .06s linear,top .06s linear,transform .05s linear}
 #loginButton span{display:inline-block;margin-left:12px;font-size:18px;line-height:0}
-.message{height:18px;margin-top:-1px;color:#666;font-size:11px}
-.footer{margin-top:30px;padding-top:17px;border-top:1px solid #202020;color:#4d4d4d;font-size:9px;letter-spacing:.18em}
-@media(max-width:520px){.card{padding:30px 24px}.logo{margin-bottom:34px}}
+.message{height:18px;margin-top:-1px;color:#888;font-size:11px}
+.footer{margin-top:30px;padding-top:17px;border-top:1px solid #e0e0d9;color:#888;font-size:9px;letter-spacing:.18em}
+@media(max-width:520px){.card{padding:30px 24px}}
