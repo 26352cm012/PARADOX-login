@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08070d">
+<title>PARADOX — Login Experiment</title>
+<style>
+:root{color-scheme:dark;--bg:#08070d;--panel:#100e19;--line:#30283e;--violet:#b79aff;--pink:#ff72c6;--muted:#a59bb5;--white:#f7f1ff}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(ellipse at 50% 0%,#251638 0%,#08070d 58%);color:var(--white);font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.14;background-image:linear-gradient(#8d68b5 1px,transparent 1px),linear-gradient(90deg,#8d68b5 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,#000,transparent 90%)}
+.shell{position:relative;width:min(960px,100%);border:1px solid var(--line);background:#0b0911eF;box-shadow:0 25px 90px #0008}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--line);gap:16px}
+.brand{font-weight:900;letter-spacing:.24em;font-size:15px}.brand span{color:var(--violet)}
+.pill{font-size:10px;color:#c3f6d0;border:1px solid #315943;padding:7px 10px;letter-spacing:.1em}
+.content{display:grid;grid-template-columns:1fr 1fr;min-height:500px}
+.intro{padding:clamp(28px,5vw,56px);border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
+.kicker{color:var(--pink);font-size:10px;letter-spacing:.2em;margin:0 0 20px}
+h1{font-size:clamp(44px,7vw,72px);line-height:.9;letter-spacing:-.08em;margin:0;font-weight:950}
+h1 span{color:var(--violet);text-shadow:0 0 28px #b79aff40}
+.description{color:var(--muted);font-size:12px;line-height:1.9;max-width:360px;margin:24px 0}
+.signal{font-size:10px;color:#786c89;line-height:2;letter-spacing:.08em}
+.login{padding:clamp(26px,4vw,44px);display:flex;flex-direction:column;justify-content:center}
+.login h2{font-size:18px;margin:0 0 8px;letter-spacing:.04em}
+.hint{font-size:11px;color:var(--muted);line-height:1.7;margin:0 0 24px}
+label{display:block;font-size:10px;color:#c6b9d8;letter-spacing:.13em;margin:17px 0 9px}
+input{width:100%;background:#09070e;border:1px solid #3a304a;padding:14px;color:var(--white);font:12px inherit;outline:none}
+input:focus{border-color:var(--violet);box-shadow:0 0 0 2px #b79aff17}
+.actions{position:relative;height:128px;margin-top:18px;border:1px dashed #40314f;background:#0a0810;overflow:hidden}
+button{font:800 11px ui-monospace,monospace;letter-spacing:.1em;cursor:pointer}
+#loginButton{position:absolute;left:10px;top:10px;padding:13px 19px;background:var(--violet);border:1px solid var(--violet);color:#10091b;white-space:nowrap;transition:transform .09s ease}
+#resetButton{margin-top:12px;background:transparent;color:var(--muted);border:1px solid #3a304a;padding:10px 13px}
+#message{font-size:11px;color:var(--muted);min-height:18px;margin:15px 0 0}
+.notice{margin:0;padding:14px 24px;border-top:1px solid var(--line);font-size:10px;line-height:1.7;color:#8d829a}
+.notice strong{color:#f5c7ff}
+@media(max-width:700px){.content{grid-template-columns:1fr}.intro{border-right:0;border-bottom:1px solid var(--line);padding:32px}.login{padding:28px 32px}.description{margin:18px 0}.signal{display:none}header{padding:17px 20px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="shell">
+<header><div class="brand">PARA<span>DOX</span></div><div class="pill">● EXPERIMENT ONLINE</div></header>
+<div class="content">
+<section class="intro">
+<p class="kicker">// INTERFACE EXPERIMENT 001</p>
+<h1>WELCOME<br>TO THE<br><span>PARADOX.</span></h1>
+<p class="description">A login screen with one tiny problem: the button has a mind of its own. Try to catch it. Go on. We dare you.</p>
+<div class="signal">SYSTEM: LOCAL DEMO<br>SECURITY: VISUAL ONLY<br>STATUS: AWAITING USER</div>
+</section>
+<section class="login">
+<h2>IDENTITY CHECK</h2>
+<p class="hint">Enter any fictional details to try the interface. The LOGIN button will dodge your cursor.</p>
+<form id="loginForm" autocomplete="off">
+<label for="userId">CODENAME</label>
+<input id="userId" name="userId" maxlength="32" placeholder="e.g. neon-ghost">
+<label for="demoKey">FICTIONAL ACCESS KEY</label>
+<input id="demoKey" name="demoKey" type="password" maxlength="32" placeholder="Anything for the demo">
+<div class="actions" id="actions">
+<button id="loginButton" type="submit">LOGIN ↗</button>
+</div>
+<p id="message" role="status" aria-live="polite">Try moving your cursor toward LOGIN.</p>
+</form>
+<button id="resetButton" type="button">RESET THE EXPERIMENT ↻</button>
+</section>
+</div>
+<div class="notice"><strong>DEMO ONLY //</strong> This is a playful front-end prototype, not a real login service. Do not enter real passwords. Form input is not saved or sent anywhere.</div>
+</main>
+<script src="script.js"></script>
+<script>
+document.getElementById("resetButton").addEventListener("click",()=>{
+  document.getElementById("loginForm").reset();
+  const b=document.getElementById("loginButton");
+  b.style.left="10px";b.style.top="10px";b.style.transform="scale(1)";
+  document.getElementById("message").textContent="Experiment reset. Try catching LOGIN.";
+});
+</script>
+</body>
+</html>
